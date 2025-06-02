@@ -559,7 +559,7 @@ def build_prometheus_config(args):
 
     print(f'Dumping promethus yaml config to {args.prometheus_output}')
     with open(args.prometheus_output, 'w') as fd:
-        yaml.dump(prom_config, stream=fd, sort_keys=False)
+        yaml.dump(prom_config, stream=fd)
 
 #
 # Config file
