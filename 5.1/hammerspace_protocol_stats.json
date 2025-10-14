@@ -160,7 +160,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "irate(hammerspace_protod_metadata_ops{instance=~\"$node\",job=~\"$job\",type=~\"read\"}[1m])",
+          "expr": "irate(hammerspace_protod_metadata_ops{instance=~\"$node\",job=~\"$job\",type=~\"read\"}[$time_interval])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{type}}",
@@ -171,7 +171,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "irate(hammerspace_protod_metadata_ops{instance=~\"$node\",job=~\"$job\",type=~\"write\"}[1m])*-1",
+          "expr": "irate(hammerspace_protod_metadata_ops{instance=~\"$node\",job=~\"$job\",type=~\"write\"}[$time_interval])*-1",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{type}}",
@@ -270,7 +270,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "irate(hammerspace_protod_compound_ops{instance=~\"$node\",job=~\"$job\",type=~\"success\"}[1m])",
+          "expr": "irate(hammerspace_protod_compound_ops{instance=~\"$node\",job=~\"$job\",type=~\"success\"}[$time_interval])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Success",
@@ -281,7 +281,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "irate(hammerspace_protod_compound_ops{instance=~\"$node\",job=~\"$job\",type=~\"error\"}[1m])*-1",
+          "expr": "irate(hammerspace_protod_compound_ops{instance=~\"$node\",job=~\"$job\",type=~\"error\"}[$time_interval])*-1",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Retry",
@@ -380,7 +380,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "irate(hammerspace_protod_file_create_ops{instance=~\"$node\",job=~\"$job\"}[1m])",
+          "expr": "irate(hammerspace_protod_file_create_ops{instance=~\"$node\",job=~\"$job\"}[$time_interval])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Create",
@@ -391,7 +391,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "irate(hammerspace_protod_file_delete_ops{instance=~\"$node\",job=~\"$job\"}[1m])*-1",
+          "expr": "irate(hammerspace_protod_file_delete_ops{instance=~\"$node\",job=~\"$job\"}[$time_interval])*-1",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Delete",
@@ -525,7 +525,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "irate(hammerspace_protod_delegations{instance=~\"$node\",job=~\"$job\",type=\"granted\"}[1m])",
+          "expr": "irate(hammerspace_protod_delegations{instance=~\"$node\",job=~\"$job\",type=\"granted\"}[$time_interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -537,7 +537,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "irate(hammerspace_protod_delegations{instance=~\"$node\",job=~\"$job\",type=\"denied\"}[1m])*-1",
+          "expr": "irate(hammerspace_protod_delegations{instance=~\"$node\",job=~\"$job\",type=\"denied\"}[$time_interval])*-1",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -696,7 +696,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "irate(hammerspace_protod_opens{instance=~\"$node\",job=~\"$job\",type=\"granted\"}[1m])",
+          "expr": "irate(hammerspace_protod_opens{instance=~\"$node\",job=~\"$job\",type=\"granted\"}[$time_interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -708,7 +708,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "irate(hammerspace_protod_opens{instance=~\"$node\",job=~\"$job\",type=\"denied\"}[1m])*-1",
+          "expr": "irate(hammerspace_protod_opens{instance=~\"$node\",job=~\"$job\",type=\"denied\"}[$time_interval])*-1",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -840,7 +840,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_nfs_protocol_op_delay_tracking{instance=~\"$node\",job=~\"$job\"}[$__rate_interval])) by (share_id, inode) != 0",
+          "expr": "sum(rate(hammerspace_nfs_protocol_op_delay_tracking{instance=~\"$node\",job=~\"$job\"}[$time_interval])) by (share_id, inode) != 0",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{share_id}}-{{inode}}",
@@ -947,7 +947,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_nfs_protocol_op_delay_tracking{instance=~\"$node\",job=~\"$job\"}[$__rate_interval])) by (volume, volume_id) != 0",
+          "expr": "sum(rate(hammerspace_nfs_protocol_op_delay_tracking{instance=~\"$node\",job=~\"$job\"}[$time_interval])) by (volume, volume_id) != 0",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{volume}} ({{volume_id}})",
@@ -1062,7 +1062,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_nfs_protocol_layout_errors_by_client{instance=~\"$node\",job=~\"$job\"}[$__rate_interval])) by (client_ip,client_id) != 0",
+          "expr": "sum(rate(hammerspace_nfs_protocol_layout_errors_by_client{instance=~\"$node\",job=~\"$job\"}[$time_interval])) by (client_ip,client_id) != 0",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{client_ip}} ({{client_id}})",
@@ -1164,7 +1164,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_nfs_protocol_layout_errors_by_volume{instance=~\"$node\",job=~\"$job\"}[$__rate_interval])) by (volume,volume_id) != 0",
+          "expr": "sum(rate(hammerspace_nfs_protocol_layout_errors_by_volume{instance=~\"$node\",job=~\"$job\"}[$time_interval])) by (volume,volume_id) != 0",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{volume}} ({{volume_id}})",
@@ -1265,7 +1265,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_nfs_protocol_layout_errors_by_client{instance=~\"$node\",job=~\"$job\"}[$__rate_interval])) by (err)",
+          "expr": "sum(rate(hammerspace_nfs_protocol_layout_errors_by_client{instance=~\"$node\",job=~\"$job\"}[$time_interval])) by (err)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{err}}",
@@ -1366,7 +1366,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_nfs_protocol_layout_errors_by_volume{instance=~\"$node\",job=~\"$job\"}[$__rate_interval])) by (err)",
+          "expr": "sum(rate(hammerspace_nfs_protocol_layout_errors_by_volume{instance=~\"$node\",job=~\"$job\"}[$time_interval])) by (err)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{err}}",
@@ -1481,7 +1481,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_nfs_protocol_server_errors_by_client{instance=~\"$node\",job=~\"$job\"}[$__rate_interval])) by (client_ip,client_id) != 0",
+          "expr": "sum(rate(hammerspace_nfs_protocol_server_errors_by_client{instance=~\"$node\",job=~\"$job\"}[$time_interval])) by (client_ip,client_id) != 0",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{client_ip}} ({{client_id}})",
@@ -1582,7 +1582,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_nfs_protocol_server_errors_by_share{instance=~\"$node\",job=~\"$job\"}[$__rate_interval])) by (share_id,share)",
+          "expr": "sum(rate(hammerspace_nfs_protocol_server_errors_by_share{instance=~\"$node\",job=~\"$job\"}[$time_interval])) by (share_id,share)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{share}} ({{share_id}})",
@@ -1683,7 +1683,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_nfs_protocol_server_errors_by_client{instance=~\"$node\",job=~\"$job\"}[$__rate_interval])) by (err)",
+          "expr": "sum(rate(hammerspace_nfs_protocol_server_errors_by_client{instance=~\"$node\",job=~\"$job\"}[$time_interval])) by (err)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{client_ip}}",
@@ -1784,7 +1784,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_nfs_protocol_server_errors_by_share{instance=~\"$node\",job=~\"$job\"}[$__rate_interval])) by (err)",
+          "expr": "sum(rate(hammerspace_nfs_protocol_server_errors_by_share{instance=~\"$node\",job=~\"$job\"}[$time_interval])) by (err)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{client_ip}}",
@@ -1897,7 +1897,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "irate(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[1m])",
+              "expr": "irate(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[$time_interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2000,7 +2000,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "irate(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"filesystem\"}[1m])",
+              "expr": "irate(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"filesystem\"}[$time_interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2103,7 +2103,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "irate(hammerspace_nfs_protocol_ops_to_storage_volumes{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[1m])",
+              "expr": "irate(hammerspace_nfs_protocol_ops_to_storage_volumes{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[$time_interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2206,7 +2206,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "irate(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"shadow\"}[1m])",
+              "expr": "irate(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"shadow\"}[$time_interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2323,7 +2323,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "idelta(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[1m])",
+              "expr": "idelta(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[$time_interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2426,7 +2426,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "idelta(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"filesystem\"}[1m])",
+              "expr": "idelta(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"filesystem\"}[$time_interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2529,7 +2529,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "idelta(hammerspace_nfs_protocol_ops_to_storage_volumes{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[1m])",
+              "expr": "idelta(hammerspace_nfs_protocol_ops_to_storage_volumes{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[$time_interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2632,7 +2632,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "idelta(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"shadow\"}[1m])",
+              "expr": "idelta(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"shadow\"}[$time_interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2749,7 +2749,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "irate(hammerspace_nfs_protocol_ops_nanosec{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[1m]) / irate(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[1m]) / 1000000",
+              "expr": "irate(hammerspace_nfs_protocol_ops_nanosec{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[$time_interval]) / irate(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[$time_interval]) / 1000000",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2852,7 +2852,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "irate(hammerspace_nfs_protocol_ops_nanosec{instance=~\"$node\",job=~\"$job\",servicer=\"filesystem\"}[1m]) / irate(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"filesystem\"}[1m]) / 1000000",
+              "expr": "irate(hammerspace_nfs_protocol_ops_nanosec{instance=~\"$node\",job=~\"$job\",servicer=\"filesystem\"}[$time_interval]) / irate(hammerspace_nfs_protocol_ops{instance=~\"$node\",job=~\"$job\",servicer=\"filesystem\"}[$time_interval]) / 1000000",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2955,7 +2955,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "irate(hammerspace_nfs_protocol_ops_to_storage_volumes_nanosec{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[1m]) / irate(hammerspace_nfs_protocol_ops_to_storage_volumes{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[1m]) / 1000000",
+              "expr": "irate(hammerspace_nfs_protocol_ops_to_storage_volumes_nanosec{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[$time_interval]) / irate(hammerspace_nfs_protocol_ops_to_storage_volumes{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[$time_interval]) / 1000000",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3112,7 +3112,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "irate(hammerspace_nfs_protocol_ops_nanosec{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[1m]) / 1000000",
+              "expr": "irate(hammerspace_nfs_protocol_ops_nanosec{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[$time_interval]) / 1000000",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3255,7 +3255,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "irate(hammerspace_nfs_protocol_ops_nanosec{instance=~\"$node\",job=~\"$job\",servicer=\"filesystem\"}[1m]) / 1000000",
+              "expr": "irate(hammerspace_nfs_protocol_ops_nanosec{instance=~\"$node\",job=~\"$job\",servicer=\"filesystem\"}[$time_interval]) / 1000000",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3357,7 +3357,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "irate(hammerspace_nfs_protocol_ops_to_storage_volumes_nanosec{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[1m]) / 1000000",
+              "expr": "irate(hammerspace_nfs_protocol_ops_to_storage_volumes_nanosec{instance=~\"$node\",job=~\"$job\",servicer=\"protocol\"}[$time_interval]) / 1000000",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3388,7 +3388,8 @@
         "query": "prometheus",
         "refresh": 1,
         "regex": "",
-        "type": "datasource"
+        "type": "datasource",
+        "hide": 2
       },
       {
         "current": {},
@@ -3431,11 +3432,64 @@
         "regex": "",
         "sort": 1,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "5m",
+          "value": "5m"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Time Interval",
+        "multi": false,
+        "name": "time_interval",
+        "options": [
+          {
+            "selected": true,
+            "text": "5m",
+            "value": "5m"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          }
+        ],
+        "query": "5m,1m,10m,30m,1h,6h,1d",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {},

@@ -394,7 +394,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_filesystem_sweeper_current_run_swept_count{instance=~\"$node\",job=~\"$job\",share=~\"$share\",sweep_type!=\"files\"}[$__rate_interval]))",
+          "expr": "sum(rate(hammerspace_filesystem_sweeper_current_run_swept_count{instance=~\"$node\",job=~\"$job\",share=~\"$share\",sweep_type!=\"files\"}[$time_interval]))",
           "legendFormat": "current",
           "range": true,
           "refId": "A"
@@ -503,7 +503,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_filesystem_sweeper_current_run_swept_count{instance=~\"$node\",job=~\"$job\",sweep_type!=\"files\"}[$__rate_interval])) by (share)",
+          "expr": "sum(rate(hammerspace_filesystem_sweeper_current_run_swept_count{instance=~\"$node\",job=~\"$job\",sweep_type!=\"files\"}[$time_interval])) by (share)",
           "legendFormat": "{{share}}",
           "range": true,
           "refId": "A"
@@ -600,7 +600,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(delta(hammerspace_filesystem_sweeper_current_run_number{instance=~\"$node\",job=~\"$job\"}[$__rate_interval])) by (share) != 0",
+          "expr": "sum(delta(hammerspace_filesystem_sweeper_current_run_number{instance=~\"$node\",job=~\"$job\"}[$time_interval])) by (share) != 0",
           "legendFormat": "{{share}}",
           "range": true,
           "refId": "A"
@@ -836,7 +836,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(rate(hammerspace_filesystem_sweeper_current_run_swept_count{instance=~\"$node\",job=~\"$job\",share=~\"$share\",sweep_type=\"files\"}[$__rate_interval]))",
+          "expr": "sum(rate(hammerspace_filesystem_sweeper_current_run_swept_count{instance=~\"$node\",job=~\"$job\",share=~\"$share\",sweep_type=\"files\"}[$time_interval]))",
           "instant": false,
           "legendFormat": "files/s",
           "range": true,
@@ -848,7 +848,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_filesystem_sweeper_current_run_swept_count{instance=~\"$node\",job=~\"$job\",share=~\"$share\",sweep_type=\"non-files\"}[$__rate_interval]))",
+          "expr": "sum(rate(hammerspace_filesystem_sweeper_current_run_swept_count{instance=~\"$node\",job=~\"$job\",share=~\"$share\",sweep_type=\"non-files\"}[$time_interval]))",
           "hide": false,
           "legendFormat": "non-files/s",
           "range": true,
@@ -860,7 +860,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_filesystem_sweeper_current_run_swept_count{instance=~\"$node\",job=~\"$job\",share=~\"$share\",sweep_type=\"items\"}[$__rate_interval]))",
+          "expr": "sum(rate(hammerspace_filesystem_sweeper_current_run_swept_count{instance=~\"$node\",job=~\"$job\",share=~\"$share\",sweep_type=\"items\"}[$time_interval]))",
           "hide": false,
           "legendFormat": "files_items/s",
           "range": true,
@@ -955,7 +955,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_filesystem_sweeper_current_run_swept_errors_count{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$__rate_interval])) by (ret_name)",
+          "expr": "sum(rate(hammerspace_filesystem_sweeper_current_run_swept_errors_count{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$time_interval])) by (ret_name)",
           "legendFormat": "{{ret_name}}",
           "range": true,
           "refId": "A"
@@ -1140,7 +1140,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",ignore!=\"1\",share=~\"$share\",background!=\"1\"}[$__interval])) by (op, ret_name, ret_num)",
+          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",ignore!=\"1\",share=~\"$share\",background!=\"1\"}[$time_interval])) by (op, ret_name, ret_num)",
           "format": "time_series",
           "hide": true,
           "interval": "",
@@ -1156,7 +1156,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",ignore!=\"1\",share=~\"$share\",background=~\"1\"}[$__interval])) by (op, ret_name, ret_num)",
+          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",ignore!=\"1\",share=~\"$share\",background=~\"1\"}[$time_interval])) by (op, ret_name, ret_num)",
           "format": "time_series",
           "hide": true,
           "interval": "",
@@ -1172,7 +1172,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\",ret_num!=\"0\"}[$__rate_interval])) by (op, ret_name, ret_num)",
+          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\",ret_num!=\"0\"}[$time_interval])) by (op, ret_name, ret_num)",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1188,7 +1188,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\",ret_num!=\"0\"}[$__rate_interval])) by (op, ret_name, ret_num)",
+          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\",ret_num!=\"0\"}[$time_interval])) by (op, ret_name, ret_num)",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1365,7 +1365,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "(sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\",ret_num!=\"0\"}[$__rate_interval])) by (op) / sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$__rate_interval])) by (op))*100",
+          "expr": "(sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\",ret_num!=\"0\"}[$time_interval])) by (op) / sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$time_interval])) by (op))*100",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1379,7 +1379,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "(sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\",ret_num!=\"0\"}[$__rate_interval])) by (op) / sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$__rate_interval])) by (op))*100",
+          "expr": "(sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\",ret_num!=\"0\"}[$time_interval])) by (op) / sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$time_interval])) by (op))*100",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1566,7 +1566,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\",ret_num!=\"0\"}[$__rate_interval])) by (op) ",
+          "expr": "sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\",ret_num!=\"0\"}[$time_interval])) by (op) ",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1580,7 +1580,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\",ret_num=~\"0\"}[$__rate_interval])) by (op)",
+          "expr": "sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\",ret_num=~\"0\"}[$time_interval])) by (op)",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1594,7 +1594,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\",ret_num=~\"0\"}[$__rate_interval])) by (op)",
+          "expr": "sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\",ret_num=~\"0\"}[$time_interval])) by (op)",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1608,7 +1608,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\",ret_num!=\"0\"}[$__rate_interval])) by (op)",
+          "expr": "sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\",ret_num!=\"0\"}[$time_interval])) by (op)",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1660,7 +1660,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum by (ttype) (rate(hammerspace_filesystem_kvs_cycles{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$__rate_interval]))",
+              "expr": "sum by (ttype) (rate(hammerspace_filesystem_kvs_cycles{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$time_interval]))",
               "interval": "",
               "legendFormat": "{{ttype}}",
               "refId": "A"
@@ -1737,7 +1737,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum by (ctype) (rate(hammerspace_filesystem_kvs_commit{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$__rate_interval]))",
+              "expr": "sum by (ctype) (rate(hammerspace_filesystem_kvs_commit{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$time_interval]))",
               "interval": "",
               "legendFormat": "{{ctype}}",
               "refId": "A"
@@ -1816,7 +1816,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(rate(hammerspace_filesystem_kvs_write_bytes{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$__rate_interval]))",
+              "expr": "sum(rate(hammerspace_filesystem_kvs_write_bytes{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$time_interval]))",
               "interval": "",
               "legendFormat": "KV Bytes Written",
               "refId": "A"
@@ -1870,7 +1870,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(rate(hammerspace_filesystem_dme_compliance_updates{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$__rate_interval]))",
+              "expr": "sum(rate(hammerspace_filesystem_dme_compliance_updates{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$time_interval]))",
               "interval": "",
               "legendFormat": "Received (DME)",
               "refId": "A"
@@ -1881,7 +1881,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(rate(hammerspace_filesystem_dme_events_sent{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$__rate_interval]))",
+              "expr": "sum(rate(hammerspace_filesystem_dme_events_sent{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$time_interval]))",
               "interval": "",
               "legendFormat": "Sent (DME)",
               "refId": "B"
@@ -1920,7 +1920,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(rate(hammerspace_filesystem_dme_compliance_updates_cycles{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$__rate_interval]))",
+              "expr": "sum(rate(hammerspace_filesystem_dme_compliance_updates_cycles{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$time_interval]))",
               "interval": "",
               "legendFormat": "Received (DME)",
               "refId": "A"
@@ -1931,7 +1931,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(rate(hammerspace_filesystem_dme_events_sent_cycles{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$__rate_interval]))",
+              "expr": "sum(rate(hammerspace_filesystem_dme_events_sent_cycles{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$time_interval]))",
               "interval": "",
               "legendFormat": "Sent (DME)",
               "refId": "B"
@@ -1985,7 +1985,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$__rate_interval])) by (op)",
+              "expr": "sum(rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$time_interval])) by (op)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -1999,7 +1999,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$__rate_interval])) by (op)",
+              "expr": "sum(rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$time_interval])) by (op)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2042,7 +2042,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$__rate_interval]))",
+              "expr": "sum(rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$time_interval]))",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2056,7 +2056,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$__rate_interval]))",
+              "expr": "sum(rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$time_interval]))",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2099,7 +2099,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum((rate(hammerspace_filesystem_ops_busy_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$__rate_interval]) / rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$__rate_interval])) / 1000) by (op)",
+              "expr": "sum((rate(hammerspace_filesystem_ops_busy_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$time_interval]) / rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$time_interval])) / 1000) by (op)",
               "format": "time_series",
               "hide": true,
               "interval": "",
@@ -2113,7 +2113,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum((rate(hammerspace_filesystem_ops_busy_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$__rate_interval]) / rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$__rate_interval])) / 1000) by (op)",
+              "expr": "sum((rate(hammerspace_filesystem_ops_busy_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$time_interval]) / rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$time_interval])) / 1000) by (op)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2156,7 +2156,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum((rate(hammerspace_filesystem_ops_wait_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$__rate_interval]) / rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$__rate_interval])) / 1000) by (op)",
+              "expr": "sum((rate(hammerspace_filesystem_ops_wait_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$time_interval]) / rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$time_interval])) / 1000) by (op)",
               "format": "time_series",
               "hide": true,
               "interval": "",
@@ -2170,7 +2170,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum((rate(hammerspace_filesystem_ops_wait_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$__rate_interval]) / rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$__rate_interval])) / 1000) by (op)",
+              "expr": "sum((rate(hammerspace_filesystem_ops_wait_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$time_interval]) / rate(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$time_interval])) / 1000) by (op)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2227,7 +2227,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(delta(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$__rate_interval])) by (op)",
+              "expr": "sum(delta(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$time_interval])) by (op)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2241,7 +2241,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(delta(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$__rate_interval])) by (op)",
+              "expr": "sum(delta(hammerspace_filesystem_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$time_interval])) by (op)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2284,7 +2284,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(delta(hammerspace_filesystem_ops_busy_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$__rate_interval]) / 1000) by (op)",
+              "expr": "sum(delta(hammerspace_filesystem_ops_busy_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$time_interval]) / 1000) by (op)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2298,7 +2298,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(delta(hammerspace_filesystem_ops_busy_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$__rate_interval]) / 1000) by (op)",
+              "expr": "sum(delta(hammerspace_filesystem_ops_busy_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$time_interval]) / 1000) by (op)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2341,7 +2341,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(delta(hammerspace_filesystem_ops_wait_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$__rate_interval]) / 1000) by (op)",
+              "expr": "sum(delta(hammerspace_filesystem_ops_wait_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$time_interval]) / 1000) by (op)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2355,7 +2355,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(delta(hammerspace_filesystem_ops_wait_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$__rate_interval]) / 1000) by (op)",
+              "expr": "sum(delta(hammerspace_filesystem_ops_wait_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$time_interval]) / 1000) by (op)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2398,7 +2398,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum((delta(hammerspace_filesystem_ops_wait_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$__rate_interval]) + delta(hammerspace_filesystem_ops_busy_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$__rate_interval])) / 1000) by (op)",
+              "expr": "sum((delta(hammerspace_filesystem_ops_wait_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$time_interval]) + delta(hammerspace_filesystem_ops_busy_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background!=\"1\"}[$time_interval])) / 1000) by (op)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2412,7 +2412,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum((delta(hammerspace_filesystem_ops_wait_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$__rate_interval]) + delta(hammerspace_filesystem_ops_busy_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$__rate_interval])) / 1000) by (op)",
+              "expr": "sum((delta(hammerspace_filesystem_ops_wait_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$time_interval]) + delta(hammerspace_filesystem_ops_busy_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\",background=~\"1\"}[$time_interval])) / 1000) by (op)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2534,7 +2534,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (op) (rate(hammerspace_filesystem_nfs3_ops{instance=~\"$node\",job=~\"$job\"}[$__rate_interval]))",
+          "expr": "sum by (op) (rate(hammerspace_filesystem_nfs3_ops{instance=~\"$node\",job=~\"$job\"}[$time_interval]))",
           "interval": "",
           "legendFormat": "{{op}}",
           "range": true,
@@ -2637,7 +2637,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (op) (rate(hammerspace_filesystem_nfs3_ops_usec{instance=~\"$node\",job=~\"$job\"}[$__rate_interval]))/1000",
+          "expr": "sum by (op) (rate(hammerspace_filesystem_nfs3_ops_usec{instance=~\"$node\",job=~\"$job\"}[$time_interval]))/1000",
           "interval": "",
           "legendFormat": "{{op}}",
           "range": true,
@@ -2740,7 +2740,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "delta(hammerspace_filesystem_nfs3_ops_usec{instance=~\"$node\",job=~\"$job\"}[$__rate_interval]) /  delta(hammerspace_filesystem_nfs3_ops{instance=~\"$node\",job=~\"$job\"}[$__rate_interval])",
+          "expr": "delta(hammerspace_filesystem_nfs3_ops_usec{instance=~\"$node\",job=~\"$job\"}[$time_interval]) /  delta(hammerspace_filesystem_nfs3_ops{instance=~\"$node\",job=~\"$job\"}[$time_interval])",
           "interval": "",
           "legendFormat": "{{op}} {{share}}",
           "range": true,
@@ -2752,7 +2752,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum by (op) (rate(hammerspace_filesystem_nfs3_ops_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$__rate_interval]))",
+          "expr": "sum by (op) (rate(hammerspace_filesystem_nfs3_ops_usec{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$time_interval]))",
           "hide": true,
           "interval": "",
           "legendFormat": "{{op}}",
@@ -2764,7 +2764,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum by (op) (rate(hammerspace_filesystem_nfs3_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$__rate_interval]))",
+          "expr": "sum by (op) (rate(hammerspace_filesystem_nfs3_ops{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}[$time_interval]))",
           "hide": true,
           "interval": "",
           "legendFormat": "{{op}}",
@@ -2870,7 +2870,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (op, volumeid) (rate(hammerspace_filesystem_nfs3_ops_usec{instance=~\"$node\",job=~\"$job\"}[$__rate_interval]))/1000 != 0",
+          "expr": "sum by (op, volumeid) (rate(hammerspace_filesystem_nfs3_ops_usec{instance=~\"$node\",job=~\"$job\"}[$time_interval]))/1000 != 0",
           "interval": "",
           "legendFormat": "{{volumeid}} {{op}} ",
           "range": true,
@@ -2975,7 +2975,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (op, ret_name, ret_num, volumeid) (delta(hammerspace_filesystem_nfs3_op_results{instance=~\"$node\",job=~\"$job\",ret_num!=\"0\"}[$__rate_interval])) != 0",
+          "expr": "sum by (op, ret_name, ret_num, volumeid) (delta(hammerspace_filesystem_nfs3_op_results{instance=~\"$node\",job=~\"$job\",ret_num!=\"0\"}[$time_interval])) != 0",
           "interval": "",
           "legendFormat": "vol {{volumeid}} {{op}} ({{ret_num}}) {{ret_name}}",
           "range": true,
@@ -3001,7 +3001,8 @@
         "query": "prometheus",
         "refresh": 1,
         "regex": "",
-        "type": "datasource"
+        "type": "datasource",
+        "hide": 2
       },
       {
         "current": {},
@@ -3064,17 +3065,70 @@
         "refresh": 2,
         "regex": "",
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "5m",
+          "value": "5m"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Time Interval",
+        "multi": false,
+        "name": "time_interval",
+        "options": [
+          {
+            "selected": true,
+            "text": "5m",
+            "value": "5m"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          }
+        ],
+        "query": "5m,1m,10m,30m,1h,6h,1d",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "utc",
   "title": "Hammerspace Filesystem Stats",
-  "uid": "a8OlTpkWz",
+  "uid": "a8OlTpkWzF",
   "version": 47,
   "weekStart": ""
 }

@@ -1,4 +1,35 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "11.4.0"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -24,7 +55,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 11,
+  "id": null,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -44,7 +75,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -131,7 +162,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
           "expr": "max(hammerspace_filesystem_replication_send_behind{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}) by (from_site)",
@@ -146,7 +177,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -233,7 +264,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "max(hammerspace_filesystem_replication_send_behind{instance=~\"$node\",job=~\"$job\",share=~\"$share\"}) by (to_site)",
@@ -248,7 +279,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Bouncing around zero is good, consistent positive is bad.",
       "fieldConfig": {
@@ -335,7 +366,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
           "expr": "max by(from_site) (deriv(hammerspace_filesystem_replication_send_behind{instance=~\"$node\", job=~\"$job\", share=~\"$share\"}[1m]))",
@@ -351,7 +382,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
         "h": 1,
@@ -365,7 +396,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "refId": "A"
         }
@@ -376,7 +407,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -465,11 +496,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",share=~\"$share\",status=\"sent\"}[$__rate_interval]))",
+          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",share=~\"$share\",status=\"sent\"}[$time_interval]))",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -479,7 +510,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -497,7 +528,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -585,11 +616,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",status=\"ok\",share=~\"$share\",type=\"snap\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",status=\"ok\",share=~\"$share\",type=\"snap\"}[$time_interval])) by (instance)",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -603,7 +634,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -691,11 +722,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",status=\"fail\",share=~\"$share\",type=\"snap\"}[$__rate_interval])) by (instance) *-1",
+          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",status=\"fail\",share=~\"$share\",type=\"snap\"}[$time_interval])) by (instance) *-1",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -709,7 +740,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -797,11 +828,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",status=\"ok\",share=~\"$share\",type=\"inode\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",status=\"ok\",share=~\"$share\",type=\"inode\"}[$time_interval])) by (instance)",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -815,7 +846,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -903,11 +934,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",status=\"fail\",share=~\"$share\",type=\"inode\"}[$__rate_interval])) by (instance) *-1",
+          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",status=\"fail\",share=~\"$share\",type=\"inode\"}[$time_interval])) by (instance) *-1",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -921,7 +952,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1009,11 +1040,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",type=\"snap\",status=\"ok\",share=~\"$share\"}[$__rate_interval]))",
+          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",type=\"snap\",status=\"ok\",share=~\"$share\"}[$time_interval]))",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -1023,11 +1054,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",type=\"snap\",status=\"fail\",share=~\"$share\"}[$__rate_interval]))*-1",
+          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",type=\"snap\",status=\"fail\",share=~\"$share\"}[$time_interval]))*-1",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -1037,11 +1068,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",type=\"inode\",status=\"ok\",share=~\"$share\"}[$__rate_interval]))",
+          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",type=\"inode\",status=\"ok\",share=~\"$share\"}[$time_interval]))",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -1051,11 +1082,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",type=\"inode\",status=\"fail\",share=~\"$share\"}[$__rate_interval]))*-1",
+          "expr": "sum(rate(hammerspace_filesystem_replication_send{instance=~\"$node\",job=~\"$job\",type=\"inode\",status=\"fail\",share=~\"$share\"}[$time_interval]))*-1",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -1070,7 +1101,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
         "h": 1,
@@ -1084,7 +1115,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "refId": "A"
         }
@@ -1095,7 +1126,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -1209,11 +1240,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",op=\"replication_merge_recs\"}[$__rate_interval])) by (ret_name, ret_num)",
+          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",op=\"replication_merge_recs\"}[$time_interval])) by (ret_name, ret_num)",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1229,7 +1260,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -1326,11 +1357,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",op=\"replication_merge_recs\"}[$__rate_interval])) by (ret_name, ret_num)",
+          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",op=\"replication_merge_recs\"}[$time_interval])) by (ret_name, ret_num)",
           "format": "time_series",
           "hide": true,
           "interval": "",
@@ -1342,10 +1373,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "(\n(sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",op=\"replication_merge_recs\",ret_num!=\"0\"}[$__rate_interval])) by (instance))\n /\n(sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",op=\"replication_merge_recs\"}[$__rate_interval])) by (instance))\n)*100",
+          "expr": "(\n(sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",op=\"replication_merge_recs\",ret_num!=\"0\"}[$time_interval])) by (instance))\n /\n(sum(delta(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",op=\"replication_merge_recs\"}[$time_interval])) by (instance))\n)*100",
           "hide": false,
           "legendFormat": "% non-zero {{instance}}",
           "range": true,
@@ -1358,7 +1389,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "g940I6xMk"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -1455,11 +1486,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",op=\"replication_merge_recs\"}[$__rate_interval])) by (ret_name, ret_num)",
+          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",op=\"replication_merge_recs\"}[$time_interval])) by (ret_name, ret_num)",
           "format": "time_series",
           "hide": true,
           "interval": "",
@@ -1471,10 +1502,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "g940I6xMk"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",op=\"replication_merge_recs\",ret_num=\"0\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(rate(hammerspace_filesystem_op_results{instance=~\"$node\",job=~\"$job\",share=~\"$share\",op=\"replication_merge_recs\",ret_num=\"0\"}[$time_interval])) by (instance)",
           "hide": false,
           "legendFormat": "Rate of merge success {{instance}}",
           "range": true,
@@ -1500,7 +1531,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "g940I6xMk"
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(hammerspace_exporter_duration,job)",
         "hide": 0,
@@ -1535,7 +1566,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "g940I6xMk"
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(hammerspace_exporter_duration,instance)",
         "hide": 0,
@@ -1570,7 +1601,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "g940I6xMk"
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(hammerspace_filesystem_ops,share)",
         "hide": 0,
@@ -1591,11 +1622,64 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "5m",
+          "value": "5m"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Time Interval",
+        "multi": false,
+        "name": "time_interval",
+        "options": [
+          {
+            "selected": true,
+            "text": "5m",
+            "value": "5m"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          }
+        ],
+        "query": "5m,1m,10m,30m,1h,6h,1d",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-12h",
     "to": "now"
   },
   "timeRangeUpdatedDuringEditOrView": false,

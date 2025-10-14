@@ -197,7 +197,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_object_file_download_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[$__rate_interval]))",
+          "expr": "sum(rate(hammerspace_object_file_download_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -210,7 +210,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_object_file_upload_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[$__rate_interval]))",
+          "expr": "sum(rate(hammerspace_object_file_upload_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -223,7 +223,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(hammerspace_object_file_upload_processing{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"})",
+          "expr": "sum(hammerspace_object_file_upload_processing{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -236,7 +236,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(hammerspace_object_file_download_processing{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"})",
+          "expr": "sum(hammerspace_object_file_download_processing{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -373,7 +373,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_object_chunk_download_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[$__rate_interval]))",
+          "expr": "sum(rate(hammerspace_object_chunk_download_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -386,7 +386,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_object_chunk_upload_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[$__rate_interval]))",
+          "expr": "sum(rate(hammerspace_object_chunk_upload_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -399,7 +399,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(hammerspace_object_chunk_upload_processing{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"})",
+          "expr": "sum(hammerspace_object_chunk_upload_processing{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -412,7 +412,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(hammerspace_object_chunk_download_processing{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"})",
+          "expr": "sum(hammerspace_object_chunk_download_processing{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -557,7 +557,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(idelta(hammerspace_object_file_upload_stage_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stage=\"failed\"}[1m]))",
+          "expr": "sum(idelta(hammerspace_object_file_upload_stage_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stage=\"failed\"}[$time_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -570,7 +570,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(idelta(hammerspace_object_file_upload_stage_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stage=\"aborted\"}[1m]))",
+          "expr": "sum(idelta(hammerspace_object_file_upload_stage_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stage=\"aborted\"}[$time_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -583,7 +583,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(idelta(hammerspace_object_file_download_stage_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stage=\"failed\"}[1m]))",
+          "expr": "sum(idelta(hammerspace_object_file_download_stage_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stage=\"failed\"}[$time_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -596,7 +596,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(idelta(hammerspace_object_file_download_stage_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stage=\"aborted\"}[1m]))",
+          "expr": "sum(idelta(hammerspace_object_file_download_stage_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stage=\"aborted\"}[$time_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -609,7 +609,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(idelta(hammerspace_object_chunk_upload_stage_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stage=\"failed\"}[1m]))",
+          "expr": "sum(idelta(hammerspace_object_chunk_upload_stage_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stage=\"failed\"}[$time_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -622,7 +622,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(idelta(hammerspace_object_chunk_download_stage_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stage=\"failed\"}[1m]))",
+          "expr": "sum(idelta(hammerspace_object_chunk_download_stage_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stage=\"failed\"}[$time_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -634,7 +634,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "idelta(hammerspace_object_unreachable{job=~\"$job\"}[1m])",
+          "expr": "idelta(hammerspace_object_unreachable{}[$time_interval])",
           "instant": false,
           "interval": "",
           "legendFormat": "CM Unreachable {{instance}}",
@@ -646,7 +646,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum by (op) (idelta(hammerspace_object_nfs_op_fail{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\"}[1m]))",
+          "expr": "sum by (op) (idelta(hammerspace_object_nfs_op_fail{cluster=~\"$cluster\"}[$time_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -763,7 +763,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(delta(hammerspace_object_chunk_download_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[1m])) / sum(delta(hammerspace_object_file_download_count{cluster=~\"$cluster\",cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[1m]))",
+          "expr": "sum(delta(hammerspace_object_chunk_download_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval])) / sum(delta(hammerspace_object_file_download_count{cluster=~\"$cluster\",cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -776,7 +776,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(delta(hammerspace_object_chunk_upload_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[1m])) / sum(delta(hammerspace_object_file_upload_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[1m]))",
+          "expr": "sum(delta(hammerspace_object_chunk_upload_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval])) / sum(delta(hammerspace_object_file_upload_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -893,7 +893,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(hammerspace_object_file_upload_stage_ms{cluster=~\"$cluster\",cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"0\"})",
+          "expr": "sum(hammerspace_object_file_upload_stage_ms{cluster=~\"$cluster\",cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"0\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -907,7 +907,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(hammerspace_object_file_download_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"0\"})",
+          "expr": "sum(hammerspace_object_file_download_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"0\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -921,7 +921,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(hammerspace_object_file_upload_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"1\"})",
+          "expr": "sum(hammerspace_object_file_upload_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"1\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -934,7 +934,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(hammerspace_object_file_download_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"1\"})",
+          "expr": "sum(hammerspace_object_file_download_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"1\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1051,7 +1051,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(hammerspace_object_chunk_upload_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"0\"})",
+          "expr": "sum(hammerspace_object_chunk_upload_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"0\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1065,7 +1065,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(hammerspace_object_chunk_download_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"0\"})",
+          "expr": "sum(hammerspace_object_chunk_download_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"0\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1079,7 +1079,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(hammerspace_object_chunk_upload_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"1\"})",
+          "expr": "sum(hammerspace_object_chunk_upload_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"1\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1092,7 +1092,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(hammerspace_object_chunk_download_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"1\"})",
+          "expr": "sum(hammerspace_object_chunk_download_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"mean\",queue=\"1\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1204,7 +1204,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_object_bytes_downloaded_physical{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[$__rate_interval]))/1024/1024",
+          "expr": "sum(rate(hammerspace_object_bytes_downloaded_physical{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval]))/1024/1024",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1217,7 +1217,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_object_bytes_uploaded_physical{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[$__rate_interval]))/1024/1024",
+          "expr": "sum(rate(hammerspace_object_bytes_uploaded_physical{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval]))/1024/1024",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1345,7 +1345,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_object_bytes_downloaded_logical{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[$__rate_interval]))/1024/1024",
+          "expr": "sum(rate(hammerspace_object_bytes_downloaded_logical{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval]))/1024/1024",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1359,7 +1359,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_object_bytes_uploaded_logical{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[$__rate_interval]))/1024/1024",
+          "expr": "sum(rate(hammerspace_object_bytes_uploaded_logical{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval]))/1024/1024",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1459,7 +1459,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_object_bytes_downloaded_physical{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[15m]))/1024/1024",
+          "expr": "sum(rate(hammerspace_object_bytes_downloaded_physical{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[15m]))/1024/1024",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1474,7 +1474,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_object_bytes_uploaded_physical{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[15m]))/1024/1024",
+          "expr": "sum(rate(hammerspace_object_bytes_uploaded_physical{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[15m]))/1024/1024",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1604,7 +1604,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_object_bytes_downloaded_logical{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[15m]))/1024/1024",
+          "expr": "sum(rate(hammerspace_object_bytes_downloaded_logical{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[15m]))/1024/1024",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1619,7 +1619,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_object_bytes_uploaded_logical{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}[15m]))/1024/1024",
+          "expr": "sum(rate(hammerspace_object_bytes_uploaded_logical{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[15m]))/1024/1024",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1768,7 +1768,7 @@
               },
               "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (instance) (rate(hammerspace_object_chunk_download_count{cluster=~\"$cluster\",job=~\"$job\",instance=~\"$node\",bkt_id=~\"$object_volume\"}[$__rate_interval])) + sum by (instance) (rate(hammerspace_object_chunk_upload_count{cluster=~\"$cluster\",job=~\"$job\",instance=~\"$node\",bkt_id=~\"$object_volume\"}[$__rate_interval]))",
+              "expr": "sum by (instance) (rate(hammerspace_object_chunk_download_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval])) + sum by (instance) (rate(hammerspace_object_chunk_upload_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval]))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -1907,7 +1907,7 @@
               },
               "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (instance) (hammerspace_object_chunk_download_processing{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}) + sum by (instance) (hammerspace_object_chunk_upload_processing{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"})",
+              "expr": "sum by (instance) (hammerspace_object_chunk_download_processing{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}) + sum by (instance) (hammerspace_object_chunk_upload_processing{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"})",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2047,7 +2047,7 @@
               },
               "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (instance) (rate(hammerspace_object_file_download_count{cluster=~\"$cluster\",job=~\"$job\",instance=~\"$node\",bkt_id=~\"$object_volume\"}[$__rate_interval])) + sum by (instance) (rate(hammerspace_object_file_upload_count{cluster=~\"$cluster\",job=~\"$job\",instance=~\"$node\",bkt_id=~\"$object_volume\"}[$__rate_interval]))",
+              "expr": "sum by (instance) (rate(hammerspace_object_file_download_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval])) + sum by (instance) (rate(hammerspace_object_file_upload_count{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}[$time_interval]))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2186,7 +2186,7 @@
               },
               "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (instance) (hammerspace_object_file_download_processing{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"}) + sum by (instance) (hammerspace_object_file_upload_processing{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"})",
+              "expr": "sum by (instance) (hammerspace_object_file_download_processing{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"}) + sum by (instance) (hammerspace_object_file_upload_processing{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"})",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2243,7 +2243,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_file_upload_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"0\"}",
+              "expr": "hammerspace_object_file_upload_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"0\"}",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2257,7 +2257,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_file_download_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"0\"}",
+              "expr": "hammerspace_object_file_download_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"0\"}",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2299,7 +2299,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_file_upload_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"0\"}",
+              "expr": "hammerspace_object_file_upload_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"0\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2312,7 +2312,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_file_download_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"0\"}",
+              "expr": "hammerspace_object_file_download_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"0\"}",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2354,7 +2354,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_file_upload_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"1\"}",
+              "expr": "hammerspace_object_file_upload_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"1\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2367,7 +2367,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_file_download_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"1\"}",
+              "expr": "hammerspace_object_file_download_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"1\"}",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2409,7 +2409,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_file_upload_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"1\"}",
+              "expr": "hammerspace_object_file_upload_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"1\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2422,7 +2422,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_file_download_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"1\"}",
+              "expr": "hammerspace_object_file_download_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"1\"}",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2464,7 +2464,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_chunk_upload_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"0\"}",
+              "expr": "hammerspace_object_chunk_upload_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"0\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2477,7 +2477,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_chunk_download_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"0\"}",
+              "expr": "hammerspace_object_chunk_download_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"0\"}",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2519,7 +2519,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_chunk_upload_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"0\"}",
+              "expr": "hammerspace_object_chunk_upload_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"0\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2532,7 +2532,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_chunk_download_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"0\"}",
+              "expr": "hammerspace_object_chunk_download_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"0\"}",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2574,7 +2574,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_chunk_upload_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"1\"}",
+              "expr": "hammerspace_object_chunk_upload_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"1\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2587,7 +2587,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_chunk_download_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"1\"}",
+              "expr": "hammerspace_object_chunk_download_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p99\",queue=\"1\"}",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2629,7 +2629,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_chunk_upload_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"1\"}",
+              "expr": "hammerspace_object_chunk_upload_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"1\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2642,7 +2642,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "hammerspace_object_chunk_download_stage_ms{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"1\"}",
+              "expr": "hammerspace_object_chunk_download_stage_ms{cluster=~\"$cluster\",bkt_id=~\"$object_volume\",stat=\"p50\",queue=\"1\"}",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2698,7 +2698,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum by (stage) (hammerspace_object_file_upload_stage_processing{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"})",
+              "expr": "sum by (stage) (hammerspace_object_file_upload_stage_processing{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"})",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2712,7 +2712,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum by (stage) (hammerspace_object_file_download_stage_processing{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"})",
+              "expr": "sum by (stage) (hammerspace_object_file_download_stage_processing{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"})",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2754,7 +2754,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum by (stage) (hammerspace_object_chunk_upload_stage_processing{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"})",
+              "expr": "sum by (stage) (hammerspace_object_chunk_upload_stage_processing{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"})",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2768,7 +2768,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum by (stage) (hammerspace_object_chunk_download_stage_processing{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",bkt_id=~\"$object_volume\"})",
+              "expr": "sum by (stage) (hammerspace_object_chunk_download_stage_processing{cluster=~\"$cluster\",bkt_id=~\"$object_volume\"})",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2824,7 +2824,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum by (threadpool, priority) (hammerspace_object_threadpool_used{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\"})",
+              "expr": "sum by (threadpool, priority) (hammerspace_object_threadpool_used{cluster=~\"$cluster\"})",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2866,7 +2866,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum by (threadpool, priority) (hammerspace_object_threadpool_waitingfor{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\"})",
+              "expr": "sum by (threadpool, priority) (hammerspace_object_threadpool_waitingfor{cluster=~\"$cluster\"})",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2908,7 +2908,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum by (uldl, priority) (hammerspace_object_threadpool_waitingfor{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",threadpool=\"breakdown\"})",
+              "expr": "sum by (uldl, priority) (hammerspace_object_threadpool_waitingfor{cluster=~\"$cluster\",threadpool=\"breakdown\"})",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2922,7 +2922,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum by (uldl, priority) (hammerspace_object_threadpool_used{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\",threadpool=\"breakdown\"})",
+              "expr": "sum by (uldl, priority) (hammerspace_object_threadpool_used{cluster=~\"$cluster\",threadpool=\"breakdown\"})",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2981,7 +2981,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(hammerspace_object_iobuffer_bytes_used{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\"})",
+          "expr": "sum(hammerspace_object_iobuffer_bytes_used{cluster=~\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3023,7 +3023,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(hammerspace_object_iobuffer_allocations{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\"}[$__rate_interval]))",
+          "expr": "sum(rate(hammerspace_object_iobuffer_allocations{cluster=~\"$cluster\"}[$time_interval]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3065,7 +3065,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum by (stat) (hammerspace_object_iobuffer_stats{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\"}/1024/1024)",
+          "expr": "sum by (stat) (hammerspace_object_iobuffer_stats{cluster=~\"$cluster\"}/1024/1024)",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3120,7 +3120,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum by (op) (rate(hammerspace_object_nfs_op_bytes{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\"}[30s]))",
+          "expr": "sum by (op) (rate(hammerspace_object_nfs_op_bytes{cluster=~\"$cluster\"}[$time_interval]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3162,7 +3162,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum by (op, instance) (irate(hammerspace_object_nfs_op_bytes{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\"}[30s]))",
+          "expr": "sum by (op, instance) (irate(hammerspace_object_nfs_op_bytes{cluster=~\"$cluster\"}[$time_interval]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3204,7 +3204,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "rate(hammerspace_object_nfs_op_bytes{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\"}[30s])",
+          "expr": "rate(hammerspace_object_nfs_op_bytes{cluster=~\"$cluster\"}[$time_interval])",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3246,7 +3246,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum by (op) (rate(hammerspace_object_nfs_op_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\"}[30s]))",
+          "expr": "sum by (op) (rate(hammerspace_object_nfs_op_count{cluster=~\"$cluster\"}[$time_interval]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3288,7 +3288,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "rate(hammerspace_object_nfs_op_count{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\"}[30s])",
+          "expr": "rate(hammerspace_object_nfs_op_count{cluster=~\"$cluster\"}[$time_interval])",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3330,7 +3330,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "rate(hammerspace_object_nfs_op_inflight{cluster=~\"$cluster\",instance=~\"$node\",job=~\"$job\"}[30s])",
+          "expr": "rate(hammerspace_object_nfs_op_inflight{cluster=~\"$cluster\"}[$time_interval])",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3358,49 +3358,34 @@
         "query": "prometheus",
         "refresh": 1,
         "regex": "",
-        "type": "datasource"
+        "type": "datasource",
+        "hide": 2
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
         "datasource": {
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(hammerspace_exporter_duration,job)",
+        "definition": "label_values(hammerspace_exporter_duration{},cluster)",
         "includeAll": false,
-        "label": "Job",
-        "name": "job",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(hammerspace_exporter_duration,job)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "label_values(hammerspace_exporter_duration{job=~\"$job\"},cluster)",
-        "includeAll": true,
         "label": "Cluster:",
         "name": "cluster",
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(hammerspace_exporter_duration{job=~\"$job\"},cluster)",
+          "query": "label_values(hammerspace_exporter_duration{},cluster)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
         "regex": "",
         "sort": 1,
-        "type": "query"
+        "type": "query",
+        "multi": false
       },
       {
         "current": {},
@@ -3408,45 +3393,77 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(hammerspace_exporter_duration{job=~\"$job\"},instance)",
-        "includeAll": true,
-        "label": "Host:",
-        "name": "node",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(hammerspace_exporter_duration{job=~\"$job\"},instance)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "label_values(hammerspace_object_bucket{instance=~\"$node\"}, bkt_id)",
+        "definition": "label_values(hammerspace_object_bucket{cluster=~\"$cluster\"}, bkt_id)",
         "includeAll": true,
         "label": "object_volume_id",
         "name": "object_volume",
         "options": [],
         "query": {
-          "query": "label_values(hammerspace_object_bucket{instance=~\"$node\"}, bkt_id)",
+          "query": "label_values(hammerspace_object_bucket{cluster=~\"$cluster\"}, bkt_id)",
           "refId": "Prometheus-object_volume-Variable-Query"
         },
         "refresh": 1,
         "regex": "",
         "sort": 3,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "5m",
+          "value": "5m"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Time Interval",
+        "multi": false,
+        "name": "time_interval",
+        "options": [
+          {
+            "selected": true,
+            "text": "5m",
+            "value": "5m"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          }
+        ],
+        "query": "5m,1m,10m,30m,1h,6h,1d",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {},

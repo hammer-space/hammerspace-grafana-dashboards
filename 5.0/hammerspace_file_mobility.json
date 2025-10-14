@@ -7,13 +7,6 @@
       "type": "datasource",
       "pluginId": "prometheus",
       "pluginName": "Prometheus"
-    },
-    {
-      "name": "VAR_DS_PROMETHEUS",
-      "type": "constant",
-      "label": "Prometheus",
-      "value": "Prometheus",
-      "description": ""
     }
   ],
   "__elements": {},
@@ -3941,7 +3934,7 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Hammerspace File Mobility",
+  "title": "Hammerspace File Mobility 5.0",
   "uid": "TdBkowRWz",
   "version": 21,
   "weekStart": ""
