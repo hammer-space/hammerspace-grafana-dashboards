@@ -94,12 +94,17 @@ def install_dashboards_from_path(args, folder_id, path_glob):
         else:
             dashboard_json = raw_dashboard
 
+        # Remove internal Grafana fields that shouldn't be sent when creating/updating
+        # These fields are assigned by Grafana and can cause "not found" errors if included
+        dashboard_json = clean_dashboard_json(dashboard_json)
+
         # Make sure there's a UID
         uid = dashboard_json.get('uid')
         if not uid:
             print(f"Warning: Dashboard {json_file} has no UID. Grafana will generate one if missing.")
             print('Aborting')
             sys.exit(1)
+
 
         # Check if the dashboard already exists
         if uid and dashboard_exists(uid):
@@ -134,6 +139,46 @@ def install_dashboards_from_path(args, folder_id, path_glob):
         else:
             print(f"Installed dashboard from {json_file} in folder ID {folder_id}")
 
+def download_dashboards(args, path_glob):
+    """
+    Download the dashboards from the target Grafana instance in a sharable format and save them to the local filesystem.
+    The dashboards will be saved to the local filesystem in the ../5.1/ and ../5.0/ directories.
+    """
+
+    for dashboard_file in glob.glob(path_glob):
+        with open(dashboard_file, 'r', encoding='utf-8') as f:
+            dashboard_json = json.load(f)
+        if 'dashboard' in dashboard_json:
+            dashboard_json = dashboard_json['dashboard']
+        uid = dashboard_json.get('uid')
+        if not uid:
+            print(f"Warning: Dashboard {dashboard_file} has no UID. Skipping")
+            continue
+        do_download_dashboard(uid, dashboard_file)
+
+def do_download_dashboard(uid, output_path):
+    """
+    Download a dashboard from Grafana in the export format for use in another instance.
+    This matches the "Export the dashboard to use in another instance" option in the Grafana UI.
+    """
+    # Use the Grafana API endpoint that returns the export format
+    # This endpoint returns { "dashboard": {...}, "meta": {...} } which is the format
+    # needed for importing into another Grafana instance
+    download_url = f"{GRAFANA_URL}/api/dashboards/uid/{uid}"
+    resp = GRAFANA_SESSION.get(download_url)
+    if resp.status_code != 200:
+        print(f"Error downloading dashboard from {download_url}: {resp.text}")
+        return
+    
+    # The response from /api/dashboards/uid/{uid} is already in the export format
+    # which includes both "dashboard" and "meta" fields, suitable for importing
+    # into another Grafana instance
+    dashboard_json = resp.json()
+    dashboard_json = clean_dashboard_json(dashboard_json)
+
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(dashboard_json, f, indent=4, sort_keys=True)
+    print(f"Downloaded dashboard with UID {uid} to {output_path}")
 
 def setup_grafna_session(args):
     global GRAFANA_URL
@@ -143,11 +188,21 @@ def setup_grafna_session(args):
 
     # Set up HTTP GRAFANA_SESSION with auth header
     GRAFANA_SESSION = rq.Session()
+    GRAFANA_SESSION.verify = False  # Disable SSL verification (for self-signed certs)
     GRAFANA_SESSION.headers.update({
         'Authorization': f'Bearer {token}',
         'Content-Type': 'application/json'
     })
 
+def clean_dashboard_json(dashboard_json):
+    """
+    Remove internal Grafana fields that shouldn't be sent when creating/updating
+    These fields are assigned by Grafana and can cause "not found" errors if included
+    """
+    dashboard_json_clean = dashboard_json.copy()
+    dashboard_json_clean.pop('id', None)  # Remove id - Grafana assigns this
+    dashboard_json_clean.pop('version', None)  # Remove version - Grafana manages this
+    return dashboard_json_clean
 
 def install_grafana_dashboards(args):
     """
@@ -631,6 +686,7 @@ def main():
     p.add_argument('-f', '--force', action='store_true', help="Don't prompt about deleting existing grafana dashboards")
     p.add_argument('-p', '--prometheus', action='store_true', help=f"configure prometheus to collect from the cluster(s) specified in {CONFIG_FILE}")
     p.add_argument('-s', '--sample_config', action='store_true', help=f'Generate a sample config.py config file at {CONFIG_FILE}')
+    p.add_argument('-D', '--download', action='store_true', help=argparse.SUPPRESS)
 
     args = p.parse_args()
     args.datasource_name = "Prometheus"
@@ -651,6 +707,11 @@ def main():
         setup_grafna_session(args)
         setup_prometheus_datasource_in_grafana(args)
         install_grafana_dashboards(args)
+
+    if args.download:
+        setup_grafna_session(args)
+        download_dashboards(args, "../5.1/*.json")
+        #download_dashboards(args, "../5.0/*.json")
 
     if args.prometheus:
         build_prometheus_config(args)
