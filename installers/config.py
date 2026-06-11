@@ -523,7 +523,6 @@ def build_prometheus_config(args):
     scr_conf.append(
         {
             'job_name': 'prometheus',
-            'fallback_scrape_protocol':'PrometheusProto',
             'static_configs': [
                 {'labels': {'node_type': 'prometheus'}},
                 {'targets': ['localhost:9090']}
@@ -552,7 +551,6 @@ def build_prometheus_config(args):
                 'targets': cluster_targets, })
     job = {
         'job_name': 'cluster',
-        'fallback_scrape_protocol': 'PrometheusProto',
         'static_configs': static_configs,
         }
     scr_conf.append(job)
@@ -581,7 +579,6 @@ def build_prometheus_config(args):
 
     job = {
         'job_name': 'anvil_nodes',
-        'fallback_scrape_protocol': 'PrometheusProto',
         'static_configs': static_configs,
         }
     scr_conf.append(job)
@@ -611,7 +608,6 @@ def build_prometheus_config(args):
 
     job = {
         'job_name': 'dsx_nodes',
-        'fallback_scrape_protocol': 'PrometheusProto',
         'static_configs': static_configs,
         }
     scr_conf.append(job)
